@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object Practice</title>
+	<style type="text/css">
+		html{font:14px/24px microsoft yahei;color: #333;}
+		h1{text-align:center; }
+		h1,h2,h3,h4,h5,h6{font-weight: normal;color: #000;}
+		.data{color:#f0f;}
+		.tip{font-size: 12px;color:#666;}
+	</style>
+</head>
+<body>
+	<h1>对象</h1>
+	<section>
+		<h2>一、判断对象类型</h2>
+		var myObt = new <input type="text" name="" id="objectTypeConstructor">();<br>
+		<input type="button" name="checkbtn" value="判断" onclick="showType()"><br>
+		myArray的数据类型是：<span class="data" id="objectType"></span>
+		<p class="tip">['Array','Boolean','Date','Number','String','RegExp']<br>Math对象由于没有构造函数，不可判断</p>
+	</section>
+	<script type="text/javascript">
+		var obts = ['Array','Boolean','Date','Number','String','RegExp']
+		var obt = document.getElementById('objectType');
+		var obtc = document.getElementById('objectTypeConstructor');
+		function showType(){
+			var m=0;
+			for(var i=0;i<obts.length;i++){
+				if (obtc.value == obts[i]) {
+					m++;
+				}
+			}
+			if (m != 0) {
+				eval('var myObt = new '+obtc.value+'();');
+				var str = myObt.constructor+"";	
+				for(var i=0;i<obts.length;i++){
+					if (str.indexOf(obts[i]) != -1) {
+						obt.innerHTML = obts[i];
+					}
+				}	
+			}else{
+				obt.innerHTML = '请输入正确的对象类型（首字母大写）';
+			}
+		}
+	</script>
+</body>
+</html>
